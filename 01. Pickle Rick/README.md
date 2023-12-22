@@ -1,13 +1,13 @@
-#Walking An Application
+# Walking An Application
 ---
 
-###Task 1 - Walking An Application
+### Task 1 - Walking An Application
 No answer needed
 
-###Task 2 - Exploring the Website
+### Task 2 - Exploring the Website
 No answer needed
 
-###Task 3 - Viewing The Page Source
+### Task 3 - Viewing The Page Source
 
 First of all, we need to access the IP given.
 In my case, 10.10.17.107
@@ -34,23 +34,23 @@ In order of appearance, we have:
 
 Let's solve these one by one:
 
-<b>What is the flag from the HTML comment?</b> 
+<b>What is the flag from the HTML comment?</b><br>
 If we try to reach the mentioned endpoint, "/new-home-beta", we get the first answer right away.
 ![First Flag](image-3.png)
 
-<b>What is the flag from the secret link?</b> 
+<b>What is the flag from the secret link?</b><br> 
 Back on the Page Source, we just click on the "/secret-page" anchor tag.
 There it is! Our second flag.
 ![Second Flag](image-4.png)
 
-<b>What is the directory listing flag?</b>
+<b>What is the directory listing flag?</b><br>
 The directory listing is probably located in the assets folder.
-As we go to <u>10.10.17.107/assets/</u>, we get the following page (with an interesting .txt in it):
-![Alt text](image-5.png)
-Click on the <u>flag.txt</u> and the third flag is found.
+As we go to <u>10.10.17.107/assets/</u>, we get the following page (with an interesting .txt in it):<br>
+![Alt text](image-5.png)<br><br>
+Click on the <u>flag.txt</u> and the third flag is found.<br>
 ![Third Flag](image-6.png)
 
-<b>What is the framework flag?</b>
+<b>What is the framework flag?</b><br>
 While viewing the Page Source, we notice the page was generated using the "THM" Framework version 1.2.
 Furthermore, there's a link pointing us to the framework's webpage: <u>https://static-labs.tryhackme.cloud/sites/thm-web-framework</u>
 
@@ -63,17 +63,19 @@ Two important things come to light:
     <li>A Change Log discussing previous versions.</li>
 </ol>
 
-Once we click on the change log, we can see a big issue was solved between versions 1.2 and 1.3: in the former, a directory called "/tmp.zip" kept being created.
+Once we click on the change log, we can see a big issue was solved between versions 1.2 and 1.3: in the former, a directory called "/tmp.zip" kept being created.<br>
 ![THM Framework Change Log](image-8.png)
 
 This means the Acme IT Support Page probably has the "/tmp.zip" as well.
-We access it via our browser and the file is automatically downloaded.
+We access it via our browser and the file is automatically downloaded.<br>
+
 ![tmp.zip File](image-9.png)
 
-Open it and, surely enough, there's our fourth flag!
+Open it and, surely enough, there's our fourth flag!<br>
+
 ![Fourth Flag](image-10.png)
 
-###Task 4 - Developer Tools - Inspector
+### Task 4 - Developer Tools - Inspector
 As recommended through the task, we now dive into the Acme IT "News" page.
 
 ![Acme IT Support Page](image-11.png)
@@ -97,13 +99,13 @@ Voilà! Just like that, the paywall goes away and we get the fifth flag.
 
 ![Fifth Flag](image-15.png)
 
-###Task 5 - Developer Tools - Debugger
+### Task 5 - Developer Tools - Debugger
 As pointed out by the task itself, we can see a quick flash of a red rectangle when we click on the "Contact" page.
 
 <b>What is the flag in the red box?</b>
 
 After opening the Inspector Tools and navigating to the Debugger (or Sources, depending on your browser) tab, we notice "flash.min.js".
-If we click on it and scroll down, we can see the "flash['remove']();" function being called.
+If we click on it and scroll down, we can see the "flash\['remove']();" function being called.
 
 Let's add a breakpoint on that line by clicking on it.
 
@@ -113,7 +115,7 @@ Refresh the page and we find the red flash!
 
 ![Sixth Flag](image-17.png)
 
-###Task 6 - Developer Tools - Network
+### Task 6 - Developer Tools - Network
 
 For our last flag, we'll inspect what's being sent to the server on the Contact page.
 For that, we open the Developer Tools and go to the Network tab.
